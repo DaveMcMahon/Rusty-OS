@@ -49,10 +49,6 @@ rather invoked directly on the OS or bootloader.
 At this point when we run the program we get a linker error. OS's have different executable formats so the
 error itself isn't important rather the root cause of the error i.e. expecting the C runtime (crt0).
 
-## Linker Error
-At this point when we run the program we get a linker error. OS's have different executable formats so the
-error itself isn't important rather the root cause of the error i.e. expecting the C runtime (crt0).
-
 Rust will attempt to compile for the specific host it's building on and uses the target triple to determine
 the set of cpu instructions to use, and always assumes there is an underlying C runtime. We need to compile
 to a different target triple so it doesn't expect the C runtime.
