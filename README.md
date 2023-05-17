@@ -37,7 +37,7 @@ we can start the program from a custom entry point without an underlying runtime
 
 ## [no_mangle] 
 This will stop the compiler from giving a unique cryptic name to the custom _start function entry point.
-We need to give this function name to the linker shortly.
+We need to give this function name to the linker as the Linker looks for a function named _start
 
 ## Extern C
 Interestingly enough, telling the compiler to use the C calling convention as Rust doesn't have one (need to verify this)
