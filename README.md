@@ -43,4 +43,28 @@ We need to give this function name to the linker shortly.
 Interestingly enough, telling the compiler to use the C calling convention as Rust doesn't have one (need to verify this)
 
 The _start function is diverging (never returns) as the entry point will never be called by another function,
-rather invoked directly on the OS or bootloader
+rather invoked directly on the OS or bootloader.
+
+## Linker Error
+At this point when we run the program we get a linker error. OS's have different executable formats so the
+error itself isn't important rather the root cause of the error i.e. expecting the C runtime (crt0).
+
+## Linker Error
+At this point when we run the program we get a linker error. OS's have different executable formats so the
+error itself isn't important rather the root cause of the error i.e. expecting the C runtime (crt0).
+
+Rust will attempt to compile for the specific host it's building on and uses the target triple to determine
+the set of cpu instructions to use, and always assumes there is an underlying C runtime. We need to compile
+to a different target triple so it doesn't expect the C runtime.
+
+## Bare Metal Target
+Cross compiling to a target with no underlying OS, and therefore no C runtime expectation, will get rid
+of linker errors under normal compilation that uses the hosts target triple.
+
+Successful compilation.
+
+## COMMIT: 905e3f672e04651094cbd972879a396ff5da2270
+
+
+
+
